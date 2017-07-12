@@ -21,6 +21,11 @@ class AdminMiddleware
             if( $routename != 'admin.login' && $routename != 'admin.logout'){
                 return redirect()->route('admin.login');
             }
+        }else{
+            $routename = Route::currentRouteName();
+            if($routename == 'admin.login'){
+                return redirect()->route('admin.index');
+            }
         }
         return $next($request);
     }
