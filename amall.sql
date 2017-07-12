@@ -10,10 +10,34 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-07-12 18:24:42
+Date: 2017-07-12 23:30:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for am_admin_column
+-- ----------------------------
+DROP TABLE IF EXISTS `am_admin_column`;
+CREATE TABLE `am_admin_column` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `level` int(10) unsigned NOT NULL DEFAULT '0',
+  `sort` int(10) unsigned NOT NULL DEFAULT '0',
+  `fid` int(10) unsigned NOT NULL DEFAULT '0',
+  `icons` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of am_admin_column
+-- ----------------------------
+INSERT INTO `am_admin_column` VALUES ('1', '仪表盘', 'admin.index', '0', '0', '0', 'fa fa-home');
+INSERT INTO `am_admin_column` VALUES ('2', '管理员管理', '', '0', '1', '0', 'fa fa-users');
+INSERT INTO `am_admin_column` VALUES ('3', '管理员', '', '1', '0', '2', 'fa fa-user');
+INSERT INTO `am_admin_column` VALUES ('4', '权限', '', '1', '1', '2', 'fa fa-suitcase');
+INSERT INTO `am_admin_column` VALUES ('5', '栏目', '', '1', '2', '2', 'fa fa-columns');
 
 -- ----------------------------
 -- Table structure for am_admin_users
