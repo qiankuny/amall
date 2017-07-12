@@ -7,4 +7,4 @@
 */
 
 Route::get('/', 'AdminController@index');
-Route::match(['get', 'post'], 'auth/login', 'AuthController@login');
+Route::match(['get', 'post'], 'login', 'AuthController@login');
