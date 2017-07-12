@@ -2,6 +2,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class AdminMiddleware
 {
@@ -14,6 +16,12 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if(Auth::guard('admin')->guest()){
+            $routename = Route::currentRouteName();
+            if( $routename != 'admin.login' && $routename != 'admin.logout'){
+                return redirect()->route('admin.login');
+            }
+        }
         return $next($request);
     }
 }

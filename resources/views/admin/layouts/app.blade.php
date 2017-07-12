@@ -92,7 +92,7 @@
                         <li><a href="#">Profile</a></li>
                         <li><a href="#">Messages</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Sign Out</a></li>
+                        <li><a href="{{route('admin.logout')}}">{{trans('admin.logout')}}</a></li>
                     </ul>
                 </li>
             </ul>

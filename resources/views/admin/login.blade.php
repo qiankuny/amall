@@ -27,14 +27,15 @@
                 <h3 class="text-center"><img class="logo-img" src="{{asset('/packages/admin/images/logo.png')}}" alt="logo"/>Clean Zone</h3>
             </div>
             <div>
-                <form style="margin-bottom: 0px !important;" class="form-horizontal" action="http://condorthemes.com/cleanzone/index.html">
+                <form style="margin-bottom: 0px !important;" class="form-horizontal" action="{{route('admin.login')}}" method="post">
+                    {{ csrf_field() }}
                     <div class="content">
                         <h4 class="title">{{trans('admin.login')}}</h4>
                         <div class="form-group">
                             <div class="col-sm-12">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" placeholder="Username" id="username" value="admin" class="form-control">
+                                    <input type="text" placeholder="{{trans('admin.username')}}" id="username" name="username" value="admin" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -42,15 +43,15 @@
                             <div class="col-sm-12">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                    <input type="password" placeholder="Password" id="password" class="form-control">
+                                    <input type="password" placeholder="{{trans('admin.password')}}" id="password" name="password" class="form-control">
                                 </div>
                             </div>
                         </div>
 
                     </div>
                     <div class="foot">
-                        <button class="btn btn-default" data-dismiss="modal" type="button">Register</button>
-                        <button class="btn btn-primary" data-dismiss="modal" type="submit">Log me in</button>
+                        {{--<button class="btn btn-default" data-dismiss="modal" type="button">Register</button>--}}
+                        <button class="btn btn-primary" data-dismiss="modal" type="submit">{{trans('admin.login')}}</button>
                     </div>
                 </form>
             </div>
