@@ -10,34 +10,35 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-07-12 23:30:01
+Date: 2017-07-13 18:15:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for am_admin_column
+-- Table structure for am_admin_menu
 -- ----------------------------
-DROP TABLE IF EXISTS `am_admin_column`;
-CREATE TABLE `am_admin_column` (
+DROP TABLE IF EXISTS `am_admin_menu`;
+CREATE TABLE `am_admin_menu` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `level` int(10) unsigned NOT NULL DEFAULT '0',
+  `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `title` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `url` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `sort` int(10) unsigned NOT NULL DEFAULT '0',
-  `fid` int(10) unsigned NOT NULL DEFAULT '0',
-  `icons` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `icons` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
--- Records of am_admin_column
+-- Records of am_admin_menu
 -- ----------------------------
-INSERT INTO `am_admin_column` VALUES ('1', '仪表盘', 'admin.index', '0', '0', '0', 'fa fa-home');
-INSERT INTO `am_admin_column` VALUES ('2', '管理员管理', '', '0', '1', '0', 'fa fa-users');
-INSERT INTO `am_admin_column` VALUES ('3', '管理员', '', '1', '0', '2', 'fa fa-user');
-INSERT INTO `am_admin_column` VALUES ('4', '权限', '', '1', '1', '2', 'fa fa-suitcase');
-INSERT INTO `am_admin_column` VALUES ('5', '栏目', '', '1', '2', '2', 'fa fa-columns');
+INSERT INTO `am_admin_menu` VALUES ('1', '0', '仪表盘', '/', '0', 'fa fa-home', null, null);
+INSERT INTO `am_admin_menu` VALUES ('2', '0', '管理员管理', '', '1', 'fa fa-users', null, null);
+INSERT INTO `am_admin_menu` VALUES ('3', '2', '管理员', '', '0', 'fa fa-user', null, null);
+INSERT INTO `am_admin_menu` VALUES ('4', '2', '权限', '', '1', 'fa fa-suitcase', null, null);
+INSERT INTO `am_admin_menu` VALUES ('5', '2', '栏目', '', '2', 'fa fa-columns', null, null);
 
 -- ----------------------------
 -- Table structure for am_admin_users
@@ -49,8 +50,8 @@ CREATE TABLE `am_admin_users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -69,8 +70,8 @@ CREATE TABLE `am_users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
